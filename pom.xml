@@ -12,7 +12,7 @@
 	<artifactId>aether-animal-ms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>aether-animal-ms</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Aether Animal Microservice</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -41,6 +41,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>
