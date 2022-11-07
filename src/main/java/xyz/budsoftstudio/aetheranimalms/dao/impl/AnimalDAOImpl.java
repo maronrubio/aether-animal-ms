@@ -22,7 +22,7 @@ public class AnimalDAOImpl implements AnimalDAO {
     @Override
     public List<AnimalEntity> getAll() {
         List<AnimalEntity> result = animalRepository.findAll();
-        logger.info("Get All Animal Result: {}",result);
+        logger.info("Get All Animal Result: {}", result);
         return result;
     }
 
