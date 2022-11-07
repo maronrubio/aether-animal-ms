@@ -1,16 +1,27 @@
 package xyz.budsoftstudio.aetheranimalms.util;
 
 import xyz.budsoftstudio.aetheranimalms.dto.AnimalDTO;
+import xyz.budsoftstudio.aetheranimalms.dto.BreedDTO;
 import xyz.budsoftstudio.aetheranimalms.entity.AnimalEntity;
-import xyz.budsoftstudio.aetheranimalms.entity.BreedEntity;
+import xyz.budsoftstudio.aetheranimalms.entity.BreedPercentageEntity;
 
 import java.time.Period;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class AnimalMapper {
 
     public AnimalDTO mapToDTO(AnimalEntity entity){
+        List<BreedDTO> breedDTOList = new ArrayList<>();
+        for(BreedPercentageEntity breedPercentageEntity : entity.getBreed()){
+            BreedDTO breedPercentageDTO = new BreedDTO();
+            breedPercentageDTO.setPercentage(breedPercentageEntity.getPercentage());
+            breedPercentageDTO.setName(breedPercentageDTO.getName());
+            breedDTOList.add(breedPercentageDTO);
+        }
+
         return AnimalDTO.builder()
                 .id(entity.getId())
                 .age(Period.between(entity.getBirthDate().toInstant()
@@ -20,7 +31,7 @@ public class AnimalMapper {
                         .toLocalDate()).getYears())
                 .birthDate(entity.getBirthDate())
                 .weight(entity.getWeight())
-                .breed(entity.getBreed().getName())
+                .breeds(breedDTOList)
                 .wingBandNo(entity.getWingBandNo())
                 .build();
     }
@@ -30,7 +41,6 @@ public class AnimalMapper {
                 .wingBandNo(dto.getWingBandNo())
                 .birthDate(dto.getBirthDate())
                 .weight(dto.getWeight())
-                .breed(BreedEntity.builder().name(dto.getBreed()).build())
                 .build();
     }
 }

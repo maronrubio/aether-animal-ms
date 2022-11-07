@@ -4,6 +4,7 @@ import lombok.*;
 import xyz.budsoftstudio.aetheranimalms.entity.BreedEntity;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,7 +15,7 @@ import java.util.Date;
 public class AnimalDTO {
     private Long id;
     private String wingBandNo;
-    private String breed;
+    private List<BreedDTO> breeds;
     private Date birthDate;
     private Integer age;
     private Double weight;

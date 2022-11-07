@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Builder
 @Entity(name="animal")
@@ -19,8 +20,8 @@ public class AnimalEntity {
     private Long id;
     private String wingBandNo;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private BreedEntity breed;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "animal")
+    private List<BreedPercentageEntity> breed;
 
     private Double weight;
 

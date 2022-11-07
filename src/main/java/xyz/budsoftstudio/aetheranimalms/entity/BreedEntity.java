@@ -17,5 +17,5 @@ public class BreedEntity {
     private Long id;
     private String name;
     @OneToMany(mappedBy = "breed")
-    private List<AnimalEntity> animal;
+    private List<BreedPercentageEntity> breedPercentage;
 }
