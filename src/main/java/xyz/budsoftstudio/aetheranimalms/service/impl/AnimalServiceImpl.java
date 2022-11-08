@@ -42,13 +42,8 @@ public class AnimalServiceImpl implements AnimalService {
 
     @Override
     public AnimalDTO addAnimal(AnimalDTO animalDTO){
-        //Validate Request Object
-        //Check if breed exists then use existing
-
-        //set breed percent
-
+        //validate request object
         AnimalEntity animalEntity = animalMapper.mapToEntity(animalDTO);
-
         List<BreedPercentageEntity> breedPercentageEntityList = new ArrayList<>();
         for(BreedDTO breedDTO : animalDTO.getBreeds()){
             BreedPercentageEntity breedPercentageEntity = new BreedPercentageEntity();
@@ -67,6 +62,12 @@ public class AnimalServiceImpl implements AnimalService {
     }
 
     private BreedEntity checkIfBreedExists(String breed){
-        return breedDAO.getBreed(breed);
+        BreedEntity breedEntity = breedDAO.getBreed(breed);
+
+        if(breedEntity != null){
+            return breedEntity;
+        }else{
+            return breedDAO.saveBreed(BreedEntity.builder().name(breed).build());
+        }
     }
 }

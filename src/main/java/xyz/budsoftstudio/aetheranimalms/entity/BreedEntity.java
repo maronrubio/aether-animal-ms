@@ -16,6 +16,6 @@ public class BreedEntity {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "breed")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "breed")
     private List<BreedPercentageEntity> breedPercentage;
 }

@@ -15,4 +15,9 @@ public class BreedDAOImpl implements BreedDAO {
     public BreedEntity getBreed(String breed) {
         return breedRepository.findByName(breed);
     }
+
+    @Override
+    public BreedEntity saveBreed(BreedEntity breedEntity) {
+        return breedRepository.save(breedEntity);
+    }
 }

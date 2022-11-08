@@ -5,4 +5,5 @@ import xyz.budsoftstudio.aetheranimalms.entity.BreedEntity;
 public interface BreedDAO {
     BreedEntity getBreed(String breed);
 
+    BreedEntity saveBreed(BreedEntity breedEntity);
 }

@@ -18,7 +18,7 @@ public class AnimalMapper {
         for(BreedPercentageEntity breedPercentageEntity : entity.getBreed()){
             BreedDTO breedPercentageDTO = new BreedDTO();
             breedPercentageDTO.setPercentage(breedPercentageEntity.getPercentage());
-            breedPercentageDTO.setName(breedPercentageDTO.getName());
+            breedPercentageDTO.setName(breedPercentageEntity.getBreed().getName());
             breedDTOList.add(breedPercentageDTO);
         }
 
@@ -28,7 +28,7 @@ public class AnimalMapper {
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate(), new Date().toInstant()
                         .atZone(ZoneId.systemDefault())
-                        .toLocalDate()).getYears())
+                        .toLocalDate()).getMonths())
                 .birthDate(entity.getBirthDate())
                 .weight(entity.getWeight())
                 .breeds(breedDTOList)
